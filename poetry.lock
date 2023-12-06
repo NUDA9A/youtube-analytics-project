@@ -256,6 +256,17 @@ files = [
 six = "*"
 
 [[package]]
+name = "property"
+version = "2.6.2"
+description = "A python module to load property files. Recursively define properties, load from env."
+optional = false
+python-versions = "*"
+files = [
+    {file = "property-2.6.2-py3-none-any.whl", hash = "sha256:643c36a4f072e158d87f67da1a946a581eca4059b356cd6f557f33d3bb1be693"},
+    {file = "property-2.6.2.tar.gz", hash = "sha256:9e4a44b554f3d045ee2f8260c15bdd262e658cd98a0a136b30ee96690933cf21"},
+]
+
+[[package]]
 name = "protobuf"
 version = "4.25.1"
 description = ""
@@ -390,4 +401,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4a7d1aba43328297cb125ca1ba2f13d520ac34de41a5510f0952bafee39a2c5c"
+content-hash = "f07e4b59f720b1598deaf90543eed255a2e69741162db8371605c0f0776c5dd0"
