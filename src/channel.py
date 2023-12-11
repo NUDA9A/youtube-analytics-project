@@ -17,9 +17,33 @@ class Channel:
         self.__title = info['items'][0]['snippet']['title']
         self.__description = info['items'][0]['snippet']['description']
         self.__url = 'https://www.youtube.com/channel/' + self.__channel_id
-        self.__subscribers = info['items'][0]['statistics']['subscriberCount']
-        self.__video_count = info['items'][0]['statistics']['videoCount']
-        self.__view_count = info['items'][0]['statistics']['viewCount']
+        self.__subscribers = int(info['items'][0]['statistics']['subscriberCount'])
+        self.__video_count = int(info['items'][0]['statistics']['videoCount'])
+        self.__view_count = int(info['items'][0]['statistics']['viewCount'])
+
+    def __str__(self):
+        return f"{self.__title} ({self.__url})"
+
+    def __add__(self, other):
+        return self.__subscribers + other.__subscribers
+
+    def __sub__(self, other):
+        return self.__subscribers - other.__subscribers
+
+    def __eq__(self, other):
+        return self.__subscribers == other.__subscribers
+
+    def __lt__(self, other):
+        return self.__subscribers < other.__subscribers
+
+    def __le__(self, other):
+        return self.__subscribers <= other.__subscribers
+
+    def __gt__(self, other):
+        return self.__subscribers > other.__subscribers
+
+    def __ge__(self, other):
+        return self.__subscribers >= other.__subscribers
 
     @property
     def title(self):
@@ -72,7 +96,5 @@ class Channel:
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        api_key: str = os.getenv('YT_API_KEY', "AIzaSyDvOyF4Jtqcbovz26tMtBTkqYbUCGeTHeE")
-        youtube = build('youtube', 'v3', developerKey=api_key)
-        channel = youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
+        channel = self.__youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
         print(json.dumps(channel, indent=2, ensure_ascii=False))
