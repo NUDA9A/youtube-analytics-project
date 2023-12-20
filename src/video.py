@@ -16,7 +16,6 @@ class Video:
         self.view_count = info['items'][0]['statistics']['viewCount']
         self.like_count = info['items'][0]['statistics']['likeCount']
 
-
     def __str__(self):
         return self.title
 
